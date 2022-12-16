@@ -87,6 +87,8 @@ const closeModal = () => {
 </script>
 
 <style scooped lang="scss">
+@use "@/assets/styles/variables" as *;
+
 .inventory {
   position: relative;
   overflow: hidden;
@@ -94,17 +96,19 @@ const closeModal = () => {
   &__list {
     height: 100%;
     display: grid;
-    grid-gap: 1px;
-    background: #4d4d4d;
-    border: 1px solid #4d4d4d;
-    border-radius: 12px;
+    grid-gap: 0.1rem;
+    background: $primary-border-color;
+    border: 0.1rem solid $primary-border-color;
+    border-radius: 1.2rem;
     list-style: none;
     padding: 0;
     margin: 0;
     overflow: hidden;
+    transition: background 0.5s ease-in-out;
 
     &__item {
-      background: #262626;
+      background: $secondary;
+      transition: background 0.5s ease-in-out;
     }
   }
 }

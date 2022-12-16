@@ -10,20 +10,19 @@ const props = defineProps({
 </script>
 
 <style scooped lang="scss">
-$base-color: #333333;
-$shine-color: #444444;
+@use "@/assets/styles/variables" as *;
 $animation-duration: 1.4s;
 
 .skeleton {
   border-radius: 1.2rem;
-  background-color: $base-color;
+  background-color: $skeleton-base-color;
   background: linear-gradient(
       110deg,
-      $base-color 5%,
-      $shine-color 35%,
-      $base-color 65%
+      $skeleton-base-color 5%,
+      $skeleton-shine-color 35%,
+      $skeleton-base-color 65%
     )
-    $base-color;
+    $skeleton-base-color;
   background-size: 200% 100%;
   background-position-x: 180%;
   animation: shine-lines $animation-duration infinite linear;

@@ -1,16 +1,19 @@
+@use "@/assets/styles/variables" as *;
+
 * {
     box-sizing: border-box;
+    outline: none;
 }
 
 html {
     font-size: 62.5%;
 }
 
-body {
-    max-width: 100vw;
-    max-height: 100vh;
+body, html {
+    width: 100vw;
+    height: 100vh;
     margin: 0;
-    background: #1E1E1E;
+    overflow: hidden;
 }
 
 #app {
@@ -24,12 +27,12 @@ svg {
 }
 
 .icon {
-    color: #FFFFFF;
+    color: $primary-text-color;
     cursor: pointer;
     transition: color .3s ease-in-out, transform .35s ease-in-out;
 
     &:hover {
-        color: #cecece;
+        color: $secondary-text-color;
         transform: scale(90%);
     }
 }

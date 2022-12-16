@@ -18,15 +18,18 @@ import UISkeleton from "./ui/UISkeleton.vue";
 </script>
 
 <style scooped lang="scss">
+@use "@/assets/styles/variables" as *;
+
 .profile {
-  background: #262626;
+  background: $secondary;
   margin-right: 2.4rem;
-  border: 1px solid #4d4d4d;
-  border-radius: 12px;
+  border: 0.1rem solid $primary-border-color;
+  border-radius: 1.2rem;
   padding: 1.8rem 1.4rem;
+  transition: background 0.5s ease-in-out;
 
   &__image {
-    border-radius: 8px;
+    border-radius: 0.8rem;
     margin-bottom: 2rem;
   }
 

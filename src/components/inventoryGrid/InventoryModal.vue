@@ -40,13 +40,13 @@
       />
     </div>
 
-    <button
+    <UIButton
       v-if="!isRemoveMode"
       @click="isRemoveMode = true"
       class="inventory-modal__button-delete"
     >
       <span>Удалить предмет</span>
-    </button>
+    </UIButton>
     <UIInputRemover
       @cancel="isRemoveMode = false"
       @remove="removeInventoryItem"
@@ -60,6 +60,8 @@
 import UISkeleton from "../ui/UISkeleton.vue";
 import CloseIcon from "@/assets/icons/close.svg";
 import UIInputRemover from "../ui/UIInputRemover.vue";
+import UIButton from "../ui/UIButton.vue";
+
 import type { InventoryItemType } from "@/types/inventory";
 import { ref } from "vue";
 import { useInventoryStore } from "@/stores/inventory";
@@ -88,12 +90,13 @@ const close = () => {
 const removeInventoryItem = (newCount: number) => {
   inventoryStore.updatePositionCounter(props.inventoryItem.position, newCount);
   isRemoveMode.value = false;
-  emit("update:modelValue", false);
-  emit("close");
+  close();
 };
 </script>
 
 <style scooped lang="scss">
+@use "@/assets/styles/variables" as *;
+
 .inventory-modal {
   display: none;
   position: absolute;
@@ -102,8 +105,8 @@ const removeInventoryItem = (newCount: number) => {
   height: 100%;
   background: rgba(38, 38, 38, 0.5);
   backdrop-filter: blur(8px);
-  border: 1px solid #4d4d4d;
-  border-radius: 0 12px 12px 0;
+  border: 1px solid $primary-border-color;
+  border-radius: 0 1.2rem 1.2rem 0;
   padding: 1.8rem 1.5rem;
 
   &--open {
@@ -135,8 +138,8 @@ const removeInventoryItem = (newCount: number) => {
     flex-direction: column;
     align-items: center;
     padding: 1.6rem 0;
-    border-top: 1px solid #4d4d4d;
-    border-bottom: 1px solid #4d4d4d;
+    border-top: 0.1rem solid $primary-border-color;
+    border-bottom: 0.1rem solid $primary-border-color;
   }
 
   &__title {
@@ -148,24 +151,7 @@ const removeInventoryItem = (newCount: number) => {
   }
 
   &__button-delete {
-    background: #fa7272;
-    border-radius: 8px;
-    color: #fff;
-    padding: 1.1rem;
     margin-top: auto;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    border: none;
-
-    & > span {
-      margin: auto;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
 </style>

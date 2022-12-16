@@ -18,6 +18,8 @@ const props = defineProps<PropType>();
 </script>
 
 <style scooped lang="scss">
+@use "@/assets/styles/variables" as *;
+
 .inventory-item {
   position: relative;
   display: flex;
@@ -34,13 +36,13 @@ const props = defineProps<PropType>();
     right: -0.1rem;
     height: 1.6rem;
     padding: 0.2rem 0.4rem;
-    border: 1px solid #4d4d4d;
-    border-radius: 6px 0px 0px 0px;
-    color: #4d4d4d;
+    border: 0.1rem solid $primary-border-color;
+    border-radius: 0.6rem 0px 0px 0px;
+    color: $primary-border-color;
     font-style: normal;
     font-weight: 500;
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 1rem;
+    line-height: 1.2rem;
   }
 }
 </style>

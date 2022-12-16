@@ -8,21 +8,19 @@
       @keydown="inputKeyPress"
     />
     <div class="remover__buttons">
-      <button class="remover__buttons__item" @click="emit('cancel')">
+      <UIButton :type="ButtonType.SECONDARY" @click="emit('cancel')">
         Отмена
-      </button>
-      <button
-        class="remover__buttons__item remover__buttons__item--confirm"
-        @click="remove"
-      >
-        Подтвердить
-      </button>
+      </UIButton>
+      <UIButton @click="remove"> Подтвердить </UIButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { InventoryItemType } from "@/types/inventory";
+import UIButton from "./UIButton.vue";
+import { ButtonType } from "@/types/button";
+
 import { ref } from "vue";
 
 type PropType = {
@@ -77,52 +75,35 @@ const inputKeyPress = (evt: KeyboardEvent) => {
 </script>
 
 <style scooped lang="scss">
+@use "@/assets/styles/variables" as *;
+
 .remover {
-  background: #262626;
-  border: 1px solid #4d4d4d;
-  border-radius: 0 12px 12px 0;
+  background: $secondary;
+  border: 0.1rem solid $primary-border-color;
+  border-radius: 0 1.2rem 1.2rem 0;
   position: absolute;
-  top: calc(100% - 13.7rem);
-  left: -1px;
+  top: 100%;
+  translate: 0 -100%;
+  left: -0.2rem;
   padding: 2rem;
   overflow: hidden;
 
   &__input {
-    background: #262626;
+    background: $secondary;
     padding: 1.2rem;
     margin-bottom: 2rem;
     border-radius: 0.4rem;
-    border: 1px solid #4d4d4d;
+    border: 0.1rem solid $primary-border-color;
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: #4d4d4d;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    color: $primary-border-color;
   }
 
   &__buttons {
     display: flex;
     justify-content: space-between;
-
-    &__item {
-      padding: 0.8rem 1.5rem;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 17px;
-      border-radius: 0.8rem;
-      border: none;
-      background: #fff;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &--confirm {
-        background: #fa7272;
-        color: #fff;
-      }
-    }
   }
 }
 </style>
