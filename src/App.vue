@@ -1,47 +1,35 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="main-wrapper">
+    <div class="content-wrapper">
+      <Profile />
+      <InventoryGrid :sizeGrid="sizeGrid" :sizeCell="sizeCell" />
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <div class="notice-wrapper">
+      <Notice />
+    </div>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script setup lang="ts">
+import Profile from "./components/Profile.vue";
+import InventoryGrid from "./components/inventoryGrid/InventoryGrid.vue";
+import Notice from "./components/Notice.vue";
+import { ref } from "vue";
+
+const sizeGrid = ref(5);
+const sizeCell = ref(10);
+</script>
+
+<style scoped lang="scss">
+.main-wrapper {
+  margin: auto;
+  padding: 3.2rem;
+  max-width: fit-content;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 50rem;
 }
 </style>
